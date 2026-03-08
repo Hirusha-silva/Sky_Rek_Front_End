@@ -2,7 +2,7 @@ import ProductCard from "./productCard";
 
 export default function Superproduct(){
     return(
-        <div>
+        <div className="bg-red-600">
             <h1>Super Product !!!</h1>
             <ProductCard        // me widihata use karanna puluwan
                 name="Iphone 16"
