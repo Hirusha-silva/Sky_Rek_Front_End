@@ -5,10 +5,16 @@ import Superproduct from './components/superProduct'
 function App() {
   return (
     <>
-      <div>
-        <Superproduct/>
-        <ProductCard name="Dell" price="$ 699" url="https://picsum.photos/id/2/200/300" />
-        <ProductCard name="Acer" price="$ 899" url="https://picsum.photos/id/3/200/300" />
+      <div className='w-full h-screen bg-blue-300'>    
+          <div className='w-[600px] h-[600px] bg-black flex flex-col justify-center'>
+            <div className='w-[75px] h-[75px] bg-yellow-600'></div>
+            <div className='w-[75px] h-[75px] bg-red-600'></div>
+            <div className='w-[75px] h-[75px] bg-green-600'></div>
+            <div className='w-[75px] h-[75px] bg-blue-600'></div>
+            <div className='w-[75px] h-[75px] bg-purple-600'></div>
+            <div className='w-[75px] h-[75px] bg-pink-600'></div>
+
+          </div>
       </div>
     </>
   )
