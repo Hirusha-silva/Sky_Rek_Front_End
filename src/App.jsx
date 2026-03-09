@@ -6,11 +6,11 @@ function App() {
   return (
     <>
       <div className='w-full h-screen bg-blue-300'>    
-          <div className='w-[600px] h-[600px] bg-black flex flex-col justify-center'>
+          <div className='w-[600px] h-[600px] bg-black flex flex-col justify-center relative'>
             <div className='w-[75px] h-[75px] bg-yellow-600'></div>
             <div className='w-[75px] h-[75px] bg-red-600'></div>
             <div className='w-[75px] h-[75px] bg-green-600'></div>
-            <div className='w-[75px] h-[75px] bg-blue-600'></div>
+            <div className='w-[75px] h-[75px] bg-blue-600 absolute right-30 top-2'></div>
             <div className='w-[75px] h-[75px] bg-purple-600'></div>
             <div className='w-[75px] h-[75px] bg-pink-600 fixed right-0 top-2'></div>
 
