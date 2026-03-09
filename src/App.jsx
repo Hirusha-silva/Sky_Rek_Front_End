@@ -12,7 +12,7 @@ function App() {
             <div className='w-[75px] h-[75px] bg-green-600'></div>
             <div className='w-[75px] h-[75px] bg-blue-600'></div>
             <div className='w-[75px] h-[75px] bg-purple-600'></div>
-            <div className='w-[75px] h-[75px] bg-pink-600'></div>
+            <div className='w-[75px] h-[75px] bg-pink-600 fixed right-0 top-2'></div>
 
           </div>
       </div>
