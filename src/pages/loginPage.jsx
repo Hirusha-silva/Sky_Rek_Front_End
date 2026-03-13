@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function LoginPage() {
     const[email,setEmail] = useState("")
@@ -16,8 +17,12 @@ export default function LoginPage() {
             password:password
         }).then((res)=>{
             console.log(res.data);
+            // alert("Login successful")
+            toast.success("Login successful") //react hot toast ekak use karala login successful kiyana message ekak display karanawa
         }).catch((err)=>{
             console.log(err);
+            // alert("Login failed")
+            toast.error("Login failed") //react hot toast ekak use karala login failed kiyana message ekak display karanawa
         })
         
         
