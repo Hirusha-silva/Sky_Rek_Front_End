@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 
 export default function LoginPage() {
     const[email,setEmail] = useState("")
     const[password,setPassword] = useState("")
+    const navigate = useNavigate() //navigate function eka use karala page ekak thiyana route ekata navigate karanawa
 
 
     function login(){
@@ -19,6 +20,12 @@ export default function LoginPage() {
             console.log(res.data);
             // alert("Login successful")
             toast.success("Login successful") //react hot toast ekak use karala login successful kiyana message ekak display karanawa
+
+            if(res.data.role === "ADMIN"){
+                navigate("/admin") //navigate function eka use karala admin page ekata navigate karanawa
+            }else if(res.data.role === "USER"){
+                navigate("/") //navigate function eka use karala home page ekata navigate karanawa
+            }
         }).catch((err)=>{
             console.log(err);
             // alert("Login failed")
