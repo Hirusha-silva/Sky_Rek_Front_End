@@ -18,6 +18,7 @@ export default function LoginPage() {
             password:password
         }).then((res)=>{
             console.log(res.data);
+            localStorage.setItem("token",res.data.token) //local storage ekata token eka set karanawa
             // alert("Login successful")
             toast.success("Login successful") //react hot toast ekak use karala login successful kiyana message ekak display karanawa
 
