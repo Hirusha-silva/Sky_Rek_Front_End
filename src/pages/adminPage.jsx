@@ -3,6 +3,7 @@ import { BsBoxSeamFill } from "react-icons/bs";
 import { GrInstall } from "react-icons/gr";
 import { BsPeopleFill } from "react-icons/bs";
 import { IoIosSettings } from "react-icons/io";
+import ProductAdmin from "./admin/productAdmin";
 
 export default function AdminPage() {
     return (
@@ -14,10 +15,10 @@ export default function AdminPage() {
                 <Link className="flex  h-[60px] w-full p-[20px] border items-center gap-3 text-3xl " to={"/admin/user"}><BsPeopleFill/>User</Link>
                 <Link className="flex  h-[60px] w-full p-[20px] border items-center gap-3 text-3xl " to={"/admin/settings"}><IoIosSettings/>Settings</Link>
             </div>
-            <div className="w-[calc(100%-400px)] h-full"> 
+            <div className="w-[calc(100%-400px)] h-full "> 
                 <Routes>
                     <Route path="/" element={<h1>Admin Dashboard</h1>} />
-                    <Route path="/products" element={<h1>Products</h1>} />
+                    <Route path="/products" element={<ProductAdmin/>} />
                     <Route path="/orders" element={<h1>Orders</h1>} />
             </Routes>
             </div>
