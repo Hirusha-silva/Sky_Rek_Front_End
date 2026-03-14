@@ -4,6 +4,7 @@ import { GrInstall } from "react-icons/gr";
 import { BsPeopleFill } from "react-icons/bs";
 import { IoIosSettings } from "react-icons/io";
 import ProductAdmin from "./admin/productAdmin";
+import AddProduct from "./admin/addProduct";
 
 export default function AdminPage() {
     return (
@@ -19,7 +20,7 @@ export default function AdminPage() {
                 <Routes>
                     <Route path="/" element={<h1>Admin Dashboard</h1>} />
                     <Route path="/products" element={<ProductAdmin/>} />
-                    <Route path="/orders" element={<h1>Orders</h1>} />
+                    <Route path="/newProduct" element={<AddProduct/>} />
             </Routes>
             </div>
         </div>
