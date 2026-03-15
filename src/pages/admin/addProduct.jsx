@@ -108,9 +108,7 @@ export default function AddProduct(){
                      </select>
                 </div>
                 <div className="w-full flex justify-center flex-row gap-5 py-[20px]">
-                    <Link to="/admin/products" className="bg-white w-[200px] h-[50px] flex justify-center items-center text-black border border-black px-4 py-2 rounded-md hover:bg-amber-600">
-                        Cansel
-                    </Link>
+                    <Link to="/admin/products" className="bg-white w-[200px] h-[50px] flex justify-center items-center text-black border border-black px-4 py-2 rounded-md hover:bg-amber-600">Cansel</Link>
                     <button  onClick={handleSubmit} className="bg-black w-[200px] h-[50px] flex justify-center items-center text-white border border-black px-4 py-2 rounded-md hover:bg-amber-600">Add Product</button>
                 </div>
             </div>
