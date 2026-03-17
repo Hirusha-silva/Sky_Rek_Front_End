@@ -7,6 +7,7 @@ import uploadFile from "../../util/mediaUpload";
 
 
 export default function UpdateProduct(){
+    
     const [productId, setProductID] = useState("")
     const [productName, setProductName] = useState("")
     const [alternativeNames, setAlternativeNames] = useState("")

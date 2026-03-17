@@ -131,7 +131,9 @@ export default function ProductAdmin(){
                                         })
                                     }}/>
                                     <BiEdit onClick={()=> {
-                                        navigate("/admin/updateProduct")
+                                        navigate("/admin/updateProduct" , {
+                                            state : product
+                                        })
                                     }} className="bg-blue-500 p-[5px] text-3xl rounded-full text-amber-50 shadow-2xl shadow-black cursor-pointer" />
                                 </td>
                             </tr>
