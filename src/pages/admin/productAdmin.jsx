@@ -1,3 +1,5 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { PiPlus } from "react-icons/pi";
 import { Link } from "react-router-dom";
 
@@ -14,7 +16,6 @@ const sampleProducts = [
     ],
     description: "Hydrating aloe vera face cream for smooth skin.",
     stock: 50,
-    isAvailble: true,
     category: "cream"
   },
   {
@@ -28,7 +29,6 @@ const sampleProducts = [
     ],
     description: "Deep cleansing neem face wash for oily skin.",
     stock: 30,
-    isAvailble: true,
     category: "face wash"
   },
   {
@@ -42,7 +42,6 @@ const sampleProducts = [
     ],
     description: "Handmade organic soap with natural ingredients.",
     stock: 100,
-    isAvailble: false,
     category: "soap"
   },
   {
@@ -56,12 +55,23 @@ const sampleProducts = [
     ],
     description: "Brightens skin and reduces dark spots.",
     stock: 20,
-    isAvailble: true,
     category: "cosmatics"
   }
 ];
 
 export default function ProductAdmin(){
+    const [products,setProducts] = useState(sampleProducts)
+
+    useEffect(()=>{
+        axios.get(import.meta.env.VITE_BACKEND_URL+"/api/products").then((res)=> {
+            setProducts(res.data)
+            console.log(res.data);
+            
+        }) 
+    },
+    []
+)
+
     return(
         <div className="h-full w-full border-2">
             <table>
@@ -73,16 +83,16 @@ export default function ProductAdmin(){
                         <th className="p-[10px] ">Labelled Price</th>
                         <th className="p-[10px] ">Price</th>
                         <th className="p-[10px] ">Stock</th>
-                        <th className="p-[10px] ">Is Available</th>
+                        {/* <th className="p-[10px] ">Is Available</th> */}
                         <th className="p-[10px] ">Category</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {sampleProducts.map((product,index) => {
+                    {products.map((product,index) => {
                         return(
                             <tr key={index}>
                                 <td>
-                                    <img src={product.images[0]} alt={product.name} />
+                                    <img src={product.images[0]} alt={product.name} className="w-[40px] h-[40px]"/>
                                 </td>
                                 <td className="p-[10px]">{product.productId}</td>
                                 <td className="p-[10px]">{product.name}</td>
