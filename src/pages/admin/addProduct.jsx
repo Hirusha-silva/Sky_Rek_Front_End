@@ -118,7 +118,7 @@ export default function AddProduct(){
                     <select onChange={(e) => setIsAvailable(e.target.value)} className="w-full h-[40px] border-1 rounded-md">
                         <option value={true}>IsAvailable</option>
                         <option value={false}>Not Available</option>
-                     </select>
+                    </select>
                 </div>
                 <div className="flex flex-col w-[200px] gap-[5px] text-sm font-semibold ">
                     <label>Category</label>
@@ -126,7 +126,7 @@ export default function AddProduct(){
                         <option value="cream">Cream</option>
                         <option value="face wash">Face Wash</option>
                         <option value="soap">Soap</option>
-                     </select>
+                    </select>
                 </div>
                 <div className="w-full flex justify-center flex-row gap-5 py-[20px]">
                     <Link to="/admin/products" className="bg-white w-[200px] h-[50px] flex justify-center items-center text-black border border-black px-4 py-2 rounded-md hover:bg-amber-600">Cansel</Link>
