@@ -8,16 +8,18 @@ import uploadFile from "../../util/mediaUpload";
 
 export default function UpdateProduct(){
     const location = useLocation() //useLocation hook eka use karala current location eke state eka gannawa, e.g. location.state => product data
-    const [productId, setProductID] = useState("")
-    const [productName, setProductName] = useState("")
-    const [alternativeNames, setAlternativeNames] = useState("")
-    const [labelledPrice, setLabelledPrice] = useState("")
-    const [price, setPrice] = useState("")
+    
+    const [productId, setProductID] = useState(location.state.productId) //productId state eka location.state.productId value ekata set karanawa, e.g. product data eke productId property eka location.state.productId
+    const [productName, setProductName] = useState(location.state.name)
+    const [alternativeNames, setAlternativeNames] = useState(location.state.altNames.join(","))
+    const [labelledPrice, setLabelledPrice] = useState(location.state.labelledPrice)
+    const [price, setPrice] = useState(location.state.price)
     const [images, setImages] = useState([])
-    const [description, setDescription] = useState("")
-    const [stock, setStock] = useState("")
-    const [isAvailable, setIsAvailable] = useState(true)
-    const [category, setCategory] = useState("cream")
+    const [description, setDescription] = useState(location.state.description)
+    const [stock, setStock] = useState(location.state.stock)
+    const [isAvailable, setIsAvailable] = useState(location.state.isAvailable)
+    const [category, setCategory] = useState(location.state.category)
+
     const [loading, setLoading] = useState(false) //loading state eka product add karana process eka thiyenawanam true wenawa, product add karapu passe false wenawa, e.g. "Add Product" button text eka "Adding..." button text ekata wenas karanawa
 
     const navigate = useNavigate()
