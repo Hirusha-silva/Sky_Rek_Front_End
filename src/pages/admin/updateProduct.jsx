@@ -73,13 +73,13 @@ export default function UpdateProduct(){
             }
         } ).then((res) => {
             console.log(res.data);
-            toast.success("Product added successfully")
+            toast.success("Product Update successfully")
             setLoading(false) 
             navigate("/admin/products") 
 
         }).catch((err) => {
             console.log(err);
-            toast.error("Failed to add product")
+            toast.error("Failed to update product")
             setLoading(false)
         })
     }
@@ -91,7 +91,7 @@ export default function UpdateProduct(){
             <div className="w-[600px]  border-2 rounded-[10px] flex flex-wrap justify-between p-[20px]">
                 <div className="flex flex-col w-[200px] gap-[5px] text-sm font-semibold  ">
                     <label>Product Id</label>
-                    <input type="text" value={productId} onChange={(e) => setProductID(e.target.value)} className="w-full border border-amber-300 h-[40px] rounded-md"/>
+                    <input disabled type="text" value={productId} onChange={(e) => setProductID(e.target.value)} className="w-full border border-amber-300 h-[40px] rounded-md"/>
                 </div>
                 <div className="flex flex-col w-[300px] gap-[5px] text-sm font-semibold ">
                     <label>Product Name</label>

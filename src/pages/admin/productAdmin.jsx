@@ -63,17 +63,19 @@ import { Link, useNavigate } from "react-router-dom";
 
 export default function ProductAdmin(){
     const [products,setProducts] = useState([])
-    const [a,setA] = useState(0)
+    // const [a,setA] = useState(0)
+    const [isLoading,setLoading] = useState(true)
 
     useEffect(()=>{
         axios.get(import.meta.env.VITE_BACKEND_URL+"/api/products").then((res)=> 
             {
             setProducts(res.data)
             console.log(res.data);
+            setLoading(false)
             
             }) 
         },
-        [a] // dependency array eke a state eka thiyenawanam useEffect function eka run wenawa, e.g. product list eka backend ekata nava data ekakata update wenawa
+        [isLoading] // dependency array eke isloading state eka thiyenawanam useEffect function eka run wenawa, e.g. product list eka backend ekata nava data ekakata update wenawa
     )
 
     const navigate = useNavigate()
@@ -124,7 +126,7 @@ export default function ProductAdmin(){
                                             }
                                         ).then((res)=>{
                                             toast.success("Product deleted successfully")
-                                            setA(a+1) // a state eka update karanawa, e.g. 0 to 1, 1 to 2, etc. useEffect dependency array eke a state eka thiyenawanam useEffect function eka run wenawa, e.g. product list eka backend ekata nava data ekakata update wenawa
+                                            setLoading(false) // product delete karapu passe product list eka nava data ekakata update wenawa, e.g. useEffect function eka run wenawa
                                         }).catch((err)=>{
                                             console.log(err);
                                             toast.error("Failed to delete product")
