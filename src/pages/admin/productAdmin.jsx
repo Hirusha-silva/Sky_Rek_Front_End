@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { BiTrash } from "react-icons/bi";
 import { PiPlus } from "react-icons/pi";
 import { Link } from "react-router-dom";
 
@@ -85,6 +86,7 @@ export default function ProductAdmin(){
                         <th className="p-[10px] ">Stock</th>
                         {/* <th className="p-[10px] ">Is Available</th> */}
                         <th className="p-[10px] ">Category</th>
+                        <th className="p-[10px]">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -99,8 +101,13 @@ export default function ProductAdmin(){
                                 <td className="p-[10px]">{product.labelledPrice}</td>
                                 <td className="p-[10px]">{product.price}</td>
                                 <td className="p-[10px]">{product.stock}</td>
-                                <td className="p-[10px]">{product.isAvailble ? "Yes" : "No" }</td>
+                                {/* <td className="p-[10px]">{product.isAvailble ? "Yes" : "No" }</td> */}
                                 <td className="p-[10px]">{product.category}</td>
+                                <td className="p-[10px]">
+                                    <BiTrash className="bg-red-500 p-[5px] text-3xl rounded-full text-amber-50 shadow-2xl shadow-black cursor-pointer" onClick={()=>{
+                                        
+                                    }}/>
+                                </td>
                             </tr>
                         )
                     } )}
