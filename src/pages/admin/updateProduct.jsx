@@ -1,13 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import uploadFile from "../../util/mediaUpload";
 
 
 
 export default function UpdateProduct(){
-    
+    const location = useLocation() //useLocation hook eka use karala current location eke state eka gannawa, e.g. location.state => product data
     const [productId, setProductID] = useState("")
     const [productName, setProductName] = useState("")
     const [alternativeNames, setAlternativeNames] = useState("")
@@ -21,6 +21,9 @@ export default function UpdateProduct(){
     const [loading, setLoading] = useState(false) //loading state eka product add karana process eka thiyenawanam true wenawa, product add karapu passe false wenawa, e.g. "Add Product" button text eka "Adding..." button text ekata wenas karanawa
 
     const navigate = useNavigate()
+
+    console.log(location);
+    
 
     async function handleSubmit(){
 
