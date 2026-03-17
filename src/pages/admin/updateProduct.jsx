@@ -8,7 +8,7 @@ import uploadFile from "../../util/mediaUpload";
 
 export default function UpdateProduct(){
     const location = useLocation() //useLocation hook eka use karala current location eke state eka gannawa, e.g. location.state => product data
-    
+
     const [productId, setProductID] = useState(location.state.productId) //productId state eka location.state.productId value ekata set karanawa, e.g. product data eke productId property eka location.state.productId
     const [productName, setProductName] = useState(location.state.name)
     const [alternativeNames, setAlternativeNames] = useState(location.state.altNames.join(","))
@@ -56,6 +56,10 @@ export default function UpdateProduct(){
             isAvailable: isAvailable,
             category: category
         }
+
+        if(responseArray.length === 0){ 
+            productData.images = location.state.images // product update karana process eke new images select karala upload karala naththam klin photo tikma dgnn
+        }
         
         const token = localStorage.getItem("token") //local storage ekata token eka gannawa
         if(token == null){
@@ -63,15 +67,15 @@ export default function UpdateProduct(){
             navigate("/login") //navigate function eka use karala login page ekata navigate karanawa
             return
         }
-        axios.post(import.meta.env.VITE_BACKEND_URL + "/api/products", productData,{
+        axios.put(import.meta.env.VITE_BACKEND_URL + "/api/products/" + productId, productData, {
             headers: {
                 Authorization: "Bearer " + token //token eka authorization header ekata set karanawa
             }
         } ).then((res) => {
             console.log(res.data);
             toast.success("Product added successfully")
-            setLoading(false) // loading state eka false karanawa, e.g. "Adding..." button text eka "Add Product" button text ekata wenas karanawa
-            navigate("/admin/products") //product add karapu passe product admin page ekata navigate karanawa
+            setLoading(false) 
+            navigate("/admin/products") 
 
         }).catch((err) => {
             console.log(err);
@@ -136,7 +140,7 @@ export default function UpdateProduct(){
                 </div>
                 <div className="w-full flex justify-center flex-row gap-5 py-[20px]">
                     <Link to="/admin/products" className="bg-white w-[200px] h-[50px] flex justify-center items-center text-black border border-black px-4 py-2 rounded-md hover:bg-amber-600">Cansel</Link>
-                    <button disabled={loading} onClick={handleSubmit} className="bg-black w-[200px] h-[50px] flex justify-center items-center text-white border border-black px-4 py-2 rounded-md hover:bg-amber-600">{loading ? "Adding..." : "Add Product"}</button>
+                    <button disabled={loading} onClick={handleSubmit} className="bg-black w-[200px] h-[50px] flex justify-center items-center text-white border border-black px-4 py-2 rounded-md hover:bg-amber-600">{loading ? "Updating..." : "Update Product"}</button>
                 </div>
             </div>
         </div>
