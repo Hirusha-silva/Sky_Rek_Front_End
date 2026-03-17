@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { BiTrash } from "react-icons/bi";
 import { PiPlus } from "react-icons/pi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const sampleProducts = [
   {
@@ -62,16 +63,21 @@ const sampleProducts = [
 
 export default function ProductAdmin(){
     const [products,setProducts] = useState(sampleProducts)
+    const [a,setA] = useState(0)
 
     useEffect(()=>{
-        axios.get(import.meta.env.VITE_BACKEND_URL+"/api/products").then((res)=> {
+        axios.get(import.meta.env.VITE_BACKEND_URL+"/api/products").then((res)=> 
+            {
             setProducts(res.data)
             console.log(res.data);
             
-        }) 
-    },
-    []
-)
+            }) 
+        },
+        [a] // dependency array eke a state eka thiyenawanam useEffect function eka run wenawa, e.g. product list eka backend ekata nava data ekakata update wenawa
+    )
+
+    const navigate = useNavigate()
+
 
     return(
         <div className="h-full w-full border-2">
@@ -105,7 +111,24 @@ export default function ProductAdmin(){
                                 <td className="p-[10px]">{product.category}</td>
                                 <td className="p-[10px]">
                                     <BiTrash className="bg-red-500 p-[5px] text-3xl rounded-full text-amber-50 shadow-2xl shadow-black cursor-pointer" onClick={()=>{
-                                        
+                                        const token = localStorage.getItem("token")
+                                        if(token == null){
+                                            navigate("/login")
+                                            return
+                                        }
+                                        axios.delete(import.meta.env.VITE_BACKEND_URL+"/api/products/"+product.productId,
+                                            {
+                                                headers:{
+                                                Authorization : `Bearer ${token}`
+                                                }
+                                            }
+                                        ).then((res)=>{
+                                            toast.success("Product deleted successfully")
+                                            setA(a+1) // a state eka update karanawa, e.g. 0 to 1, 1 to 2, etc. useEffect dependency array eke a state eka thiyenawanam useEffect function eka run wenawa, e.g. product list eka backend ekata nava data ekakata update wenawa
+                                        }).catch((err)=>{
+                                            console.log(err);
+                                            toast.error("Failed to delete product")
+                                        })
                                     }}/>
                                 </td>
                             </tr>
