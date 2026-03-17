@@ -1,68 +1,68 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { BiTrash } from "react-icons/bi";
+import { BiEdit, BiTrash } from "react-icons/bi";
 import { PiPlus } from "react-icons/pi";
 import { Link, useNavigate } from "react-router-dom";
 
-const sampleProducts = [
-  {
-    productId: "P001",
-    name: "Aloe Vera Face Cream",
-    altNames: ["Aloe Cream", "Herbal Cream"],
-    labelledPrice: 1500,
-    price: 1200,
-    images: [
-      "https://via.placeholder.com/300",
-      "https://via.placeholder.com/300"
-    ],
-    description: "Hydrating aloe vera face cream for smooth skin.",
-    stock: 50,
-    category: "cream"
-  },
-  {
-    productId: "P002",
-    name: "Neem Face Wash",
-    altNames: ["Neem Cleanser", "Herbal Face Wash"],
-    labelledPrice: 900,
-    price: 750,
-    images: [
-      "https://via.placeholder.com/300"
-    ],
-    description: "Deep cleansing neem face wash for oily skin.",
-    stock: 30,
-    category: "face wash"
-  },
-  {
-    productId: "P003",
-    name: "Organic Soap",
-    altNames: ["Natural Soap"],
-    labelledPrice: 500,
-    price: 400,
-    images: [
-      "https://via.placeholder.com/300"
-    ],
-    description: "Handmade organic soap with natural ingredients.",
-    stock: 100,
-    category: "soap"
-  },
-  {
-    productId: "P004",
-    name: "Vitamin C Serum",
-    altNames: ["Skin Bright Serum"],
-    labelledPrice: 2500,
-    price: 2100,
-    images: [
-      "https://via.placeholder.com/300"
-    ],
-    description: "Brightens skin and reduces dark spots.",
-    stock: 20,
-    category: "cosmatics"
-  }
-];
+// const sampleProducts = [
+//   {
+//     productId: "P001",
+//     name: "Aloe Vera Face Cream",
+//     altNames: ["Aloe Cream", "Herbal Cream"],
+//     labelledPrice: 1500,
+//     price: 1200,
+//     images: [
+//       "https://via.placeholder.com/300",
+//       "https://via.placeholder.com/300"
+//     ],
+//     description: "Hydrating aloe vera face cream for smooth skin.",
+//     stock: 50,
+//     category: "cream"
+//   },
+//   {
+//     productId: "P002",
+//     name: "Neem Face Wash",
+//     altNames: ["Neem Cleanser", "Herbal Face Wash"],
+//     labelledPrice: 900,
+//     price: 750,
+//     images: [
+//       "https://via.placeholder.com/300"
+//     ],
+//     description: "Deep cleansing neem face wash for oily skin.",
+//     stock: 30,
+//     category: "face wash"
+//   },
+//   {
+//     productId: "P003",
+//     name: "Organic Soap",
+//     altNames: ["Natural Soap"],
+//     labelledPrice: 500,
+//     price: 400,
+//     images: [
+//       "https://via.placeholder.com/300"
+//     ],
+//     description: "Handmade organic soap with natural ingredients.",
+//     stock: 100,
+//     category: "soap"
+//   },
+//   {
+//     productId: "P004",
+//     name: "Vitamin C Serum",
+//     altNames: ["Skin Bright Serum"],
+//     labelledPrice: 2500,
+//     price: 2100,
+//     images: [
+//       "https://via.placeholder.com/300"
+//     ],
+//     description: "Brightens skin and reduces dark spots.",
+//     stock: 20,
+//     category: "cosmatics"
+//   }
+// ];
 
 export default function ProductAdmin(){
-    const [products,setProducts] = useState(sampleProducts)
+    const [products,setProducts] = useState([])
     const [a,setA] = useState(0)
 
     useEffect(()=>{
@@ -109,7 +109,7 @@ export default function ProductAdmin(){
                                 <td className="p-[10px]">{product.stock}</td>
                                 {/* <td className="p-[10px]">{product.isAvailble ? "Yes" : "No" }</td> */}
                                 <td className="p-[10px]">{product.category}</td>
-                                <td className="p-[10px]">
+                                <td className="p-[10px] flex flex-row justify-center items-center gap-3">
                                     <BiTrash className="bg-red-500 p-[5px] text-3xl rounded-full text-amber-50 shadow-2xl shadow-black cursor-pointer" onClick={()=>{
                                         const token = localStorage.getItem("token")
                                         if(token == null){
@@ -130,6 +130,9 @@ export default function ProductAdmin(){
                                             toast.error("Failed to delete product")
                                         })
                                     }}/>
+                                    <BiEdit onClick={()=> {
+                                        navigate("/admin/updateProduct")
+                                    }} className="bg-blue-500 p-[5px] text-3xl rounded-full text-amber-50 shadow-2xl shadow-black cursor-pointer" />
                                 </td>
                             </tr>
                         )

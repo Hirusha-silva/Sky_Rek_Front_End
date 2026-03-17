@@ -5,6 +5,7 @@ import { BsPeopleFill } from "react-icons/bs";
 import { IoIosSettings } from "react-icons/io";
 import ProductAdmin from "./admin/productAdmin";
 import AddProduct from "./admin/addProduct";
+import UpdateProduct from "./admin/updateProduct";
 
 export default function AdminPage() {
     return (
@@ -21,6 +22,7 @@ export default function AdminPage() {
                     <Route path="/" element={<h1>Admin Dashboard</h1>} />
                     <Route path="/products" element={<ProductAdmin/>} />
                     <Route path="/newProduct" element={<AddProduct/>} />
+                    <Route path="/updateProduct" element={<UpdateProduct/>} />
             </Routes>
             </div>
         </div>
