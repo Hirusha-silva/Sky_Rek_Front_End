@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { BiEdit, BiTrash } from "react-icons/bi";
 import { PiPlus } from "react-icons/pi";
 import { Link, useNavigate } from "react-router-dom";
+import Loader from "../../components/loader";
 
 // const sampleProducts = [
 //   {
@@ -85,7 +86,7 @@ export default function ProductAdmin(){
 
     return(
         <div className="h-full w-full border-2">
-            {isLoading ? <h1>Loading</h1> :<table>
+            {isLoading ? <Loader/> : <table>
                 <thead>
                     <tr>
                         <th className="p-[10px]">Image</th>
