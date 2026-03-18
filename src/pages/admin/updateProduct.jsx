@@ -3,6 +3,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import uploadFile from "../../util/mediaUpload";
+import Loader from "../../components/loader";
 
 
 
@@ -140,7 +141,7 @@ export default function UpdateProduct(){
                 </div>
                 <div className="w-full flex justify-center flex-row gap-5 py-[20px]">
                     <Link to="/admin/products" className="bg-white w-[200px] h-[50px] flex justify-center items-center text-black border border-black px-4 py-2 rounded-md hover:bg-amber-600">Cansel</Link>
-                    <button disabled={loading} onClick={handleSubmit} className="bg-black w-[200px] h-[50px] flex justify-center items-center text-white border border-black px-4 py-2 rounded-md hover:bg-amber-600">{loading ? "Updating..." : "Update Product"}</button>
+                    <button disabled={loading} onClick={handleSubmit} className="bg-black w-[200px] h-[50px] flex justify-center items-center text-white border border-black px-4 py-2 rounded-md hover:bg-amber-600">{loading ? "Loading.." : "Update Product"}</button>
                 </div>
             </div>
         </div>
