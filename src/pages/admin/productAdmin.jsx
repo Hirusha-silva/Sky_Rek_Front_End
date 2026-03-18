@@ -67,6 +67,7 @@ export default function ProductAdmin(){
     const [isLoading,setLoading] = useState(true)
 
     useEffect(()=>{
+        if(isLoading){
         axios.get(import.meta.env.VITE_BACKEND_URL+"/api/products").then((res)=> 
             {
             setProducts(res.data)
@@ -74,8 +75,9 @@ export default function ProductAdmin(){
             setLoading(false)
             
             }) 
-        },
-        [isLoading] // dependency array eke isloading state eka thiyenawanam useEffect function eka run wenawa, e.g. product list eka backend ekata nava data ekakata update wenawa
+        }
+            },
+            [isLoading] // dependency array eke isloading state eka thiyenawanam useEffect function eka run wenawa, e.g. product list eka backend ekata nava data ekakata update wenawa
     )
 
     const navigate = useNavigate()
@@ -83,7 +85,7 @@ export default function ProductAdmin(){
 
     return(
         <div className="h-full w-full border-2">
-            <table>
+            {isLoading ? <h1>Loading</h1> :<table>
                 <thead>
                     <tr>
                         <th className="p-[10px]">Image</th>
@@ -142,7 +144,7 @@ export default function ProductAdmin(){
                         )
                     } )}
                 </tbody>
-            </table>
+            </table>}
 
             <Link to={"/admin/newProduct"} className="fixed bottom-10 right-10 bg-blue-500 text-white p-5 rounded-full shadow-2xl ">
                 <PiPlus className="text-3xl"/>
