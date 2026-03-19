@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import Loader from "../../components/loader";
+import ImageSlider from "../../components/imageSlider";
 
 export default function OverViewPage(){
     const params = useParams();
@@ -26,15 +27,23 @@ export default function OverViewPage(){
 
         return(
             <div className="w-full h-full">
-                {status === "loading" && <Loader/>}
+                {
+                status === "loading" && <Loader/>
+                }
+
                 {
                 status === "success" && 
                     <div className="w-full h-full flex flex-row">
-                        <div className="w-[49%] h-full flex flex-col justify-center items-center bg-blue-600"></div>
+                        <div className="w-[49%] h-full flex flex-col justify-center items-center ">
+                            <ImageSlider images ={product.images}/>
+                        </div>
                         <div className="w-[49%] h-full bg-green-600"></div>
                     </div>
                 }
-                {status === "error" && <div>Error loading product details</div>}
+
+                {
+                status === "error" && <div>Error loading product details</div>
+                }
                
             </div>
         )
