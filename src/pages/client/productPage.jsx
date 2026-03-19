@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Loader from "../../components/loader";
+import ProductCard from "../../components/productCard";
 
 export default function ProductPage(){
     const [products, setProducts] = useState([]);
@@ -27,8 +28,19 @@ export default function ProductPage(){
 
     )
     return(
-        <div className="w-full h-full bg-red-500">
-            {loading ? <Loader/> : <h1>Products</h1>}
+        <div className="w-full h-full ">
+            {loading ? <Loader/> : 
+                <div className="w-full flex  flex-wrap gap-4 justify-center items-center">
+                    {
+                        products.map(
+                            (product)=>{
+                                return(
+                                    <ProductCard key={product.productId} product={product}/>
+                                )   
+                        })
+                    }
+                </div>
+            }
         </div>
     )
 }
