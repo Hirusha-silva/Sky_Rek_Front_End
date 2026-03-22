@@ -59,7 +59,9 @@ export default function CheckoutPage(){
                                 </div>
                                 <button className="w-[30px] h-[30px] right-[-40px] absolute bg-red-700 shadow rounded-full flex justify-center items-center text-white border-[2px] border-red-500 hover:bg-white hover:text-red-500 cursor-pointer" onClick={
                                     ()=> {
-                                       
+                                        const newCart = [...cart]
+                                        newCart.splice(index,1)
+                                        setCart(newCart)
                                     }
                                 }>
                                     <TbTrash/>
