@@ -9,3 +9,35 @@ export function getCart(){
     const cart = JSON.parse(cartInString); // local storage eke cart eka string ekak widiyata thiyenwa nisa e string eka parse krnwa json ekak widiyata convert krnwa
     return cart;
 }
+
+
+export function addToCart(product,qty){
+    const cart = getCart()
+
+    const exsistingProductIndex = cart.findIndex((item) => {
+        return item.productId === product.productId // samana productid thiynwanm true return kranwa
+    }); 
+
+    if(exsistingProductIndex == -1){
+        cart.push({
+            productId: product.productId,
+            name: product.name,
+            price: product.price,
+            quantity: qty,
+            altNames: product.altNames,
+            image: product.image
+        })
+    }else{
+        const newQty = cart[exsistingProductIndex].quantity + qty;
+        if(newQty <= 0){
+            const newCart = cart.filter((item,index) => {
+                return index !== exsistingProductIndex // exsisting product index ekak naththam true return krnwa asmana index okkoma aragena array ekak hadanwa
+            })
+            localStorage.setItem("cart", JSON.stringify(newCart));
+        }else{
+            cart[exsistingProductIndex].quantity = newQty;
+            localStorage.setItem("cart", JSON.stringify(cart));
+        }
+    }
+
+}
