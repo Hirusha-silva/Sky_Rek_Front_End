@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { getCart } from "../../util/cart"
+import { addToCart, getCart } from "../../util/cart"
 import { TbTrash } from "react-icons/tb"
 
 export default function CartPage(){
@@ -21,7 +21,12 @@ export default function CartPage(){
                                 <div className="w-[190px] h-full flex flex-row justify-center items-center">
                                     <button className="flex justify-center items-center bg-blue-500 rounded-full w-[30px]  text-white cursor-pointer hover:bg-blue-900">-</button>
                                     <span className="mx-[10px]">{item.quantity}</span>
-                                    <button className="flex justify-center items-center bg-blue-500 rounded-full w-[30px] text-white cursor-pointer hover:bg-blue-900">+</button>
+                                    <button className="flex justify-center items-center bg-blue-500 rounded-full w-[30px] text-white cursor-pointer hover:bg-blue-900" onClick={
+                                        ()=>{
+                                            addToCart(item,1)
+                                            setCart(getCart())
+                                        }
+                                    }>+</button>
                                 </div>
                                 <div className="w-[190px] h-full flex  justify-end items-center pr-[10px]">
                                     <span className="font-bold">${(item.price * item.quantity).toLocaleString('en-US', { style: 'currency', currency: 'LKR' })}</span>
