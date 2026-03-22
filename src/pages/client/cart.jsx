@@ -1,5 +1,35 @@
+import { useState } from "react"
+import { getCart } from "../../util/cart"
+
 export default function CartPage(){
+    // localStorage.setItem("cart","[]") // cart eka empty krnwa local storage eke
+    const [cart,setCart] = useState(getCart())
+
     return(
-        <div>Cart Page</div>
+        <div className="w-full h-screen flex flex-col py-[40px] items-center">
+            {
+                cart.map(
+                    (item)=> {
+                        return(
+                            <div key={item.productId} className="w-[800px] h-[100px] m-[10px] shadow-2xl flex flex-row items-center">
+                                <img src={item.image} className="w-[100px] h-[100px] object-cover" />
+                                <div className="w-[320px] h-full   flex flex-col justify-center pl-[10px]">
+                                    <span className=" font-bold">{item.name}</span>
+                                    <span className="">${item.price.toLocaleString('en-US', { style: 'currency', currency: 'LKR' })}</span>
+                                </div>
+                                <div className="w-[190px] h-full flex flex-row justify-center items-center">
+                                    <button className="flex justify-center items-center bg-blue-500 rounded-full w-[30px]  text-white cursor-pointer hover:bg-blue-900">-</button>
+                                    <span className="mx-[10px]">{item.quantity}</span>
+                                    <button className="flex justify-center items-center bg-blue-500 rounded-full w-[30px] text-white cursor-pointer hover:bg-blue-900">+</button>
+                                </div>
+                                <div className="w-[190px] h-full flex  justify-end items-center pr-[10px]">
+                                    <span className="font-bold">${(item.price * item.quantity).toLocaleString('en-US', { style: 'currency', currency: 'LKR' })}</span>
+                                </div>
+                            </div>
+                        )
+                    }
+                )
+            }
+        </div>
     )
 }
