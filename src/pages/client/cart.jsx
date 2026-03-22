@@ -36,7 +36,12 @@ export default function CartPage(){
                                 <div className="w-[190px] h-full flex  justify-end items-center pr-[10px]">
                                     <span className="font-bold">${(item.price * item.quantity).toLocaleString('en-US', { style: 'currency', currency: 'LKR' })}</span>
                                 </div>
-                                <button className="w-[30px] h-[30px] right-[-40px] absolute bg-red-700 shadow rounded-full flex justify-center items-center text-white border-[2px] border-red-500 hover:bg-white hover:text-red-500 cursor-pointer">
+                                <button className="w-[30px] h-[30px] right-[-40px] absolute bg-red-700 shadow rounded-full flex justify-center items-center text-white border-[2px] border-red-500 hover:bg-white hover:text-red-500 cursor-pointer" onClick={
+                                    ()=> {
+                                        addToCart(item, -item.quantity)
+                                        setCart(getCart())
+                                    }
+                                }>
                                     <TbTrash/>
                                 </button>
                             </div>
