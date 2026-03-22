@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import Loader from "../../components/loader";
 import ImageSlider from "../../components/imageSlider";
+import { addToCart, getCart } from "../../util/cart";
 
 export default function OverViewPage(){
     const params = useParams();
@@ -55,7 +56,12 @@ export default function OverViewPage(){
                             </div>
                             <div className="w-full flex flex-row justify-center gap-[10px] items-center  mt-[20px]">
                                 <button className="w-[200px] h-[50px] rounded-xl text-white cursor-pointer bg-blue-500 border border-blue-500 hover:bg-white hover:text-blue-500">Buy Now</button>
-                                <button className="w-[200px] h-[50px] rounded-xl text-white cursor-pointer bg-blue-700 border border-blue-700 hover:bg-white hover:text-blue-700">Add to Cart </button>
+                                <button className="w-[200px] h-[50px] rounded-xl text-white cursor-pointer bg-blue-700 border border-blue-700 hover:bg-white hover:text-blue-700" onClick={()=> {
+                                    addToCart(product,1)
+                                    toast.success("Product Add To Cart")
+                                    console.log(getCart());
+                                    
+                                }}>Add to Cart </button>
                             </div>
                         </div>
                     </div>

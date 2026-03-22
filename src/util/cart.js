@@ -27,6 +27,7 @@ export function addToCart(product,qty){
             altNames: product.altNames,
             image: product.image
         })
+        localStorage.setItem("cart", JSON.stringify(cart));
     }else{
         const newQty = cart[exsistingProductIndex].quantity + qty;
         if(newQty <= 0){
