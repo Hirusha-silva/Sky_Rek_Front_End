@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { addToCart, getCart } from "../../util/cart"
+import { addToCart, getCart, getTotal } from "../../util/cart"
 import { TbTrash } from "react-icons/tb"
 
 export default function CartPage(){
@@ -49,6 +49,11 @@ export default function CartPage(){
                     }
                 )
             }
+            <div className="w-[800px] h-[100px] m-[10px]  p-[10px] shadow-2xl flex flex-row justify-end items-center">
+                <span className="text-2xl font-bold">
+                    Total: {getTotal().toLocaleString('en-US', { style: 'currency', currency: 'LKR' })}
+                </span>
+            </div>
         </div>
     )
 }
