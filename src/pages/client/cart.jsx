@@ -49,10 +49,11 @@ export default function CartPage(){
                     }
                 )
             }
-            <div className="w-[800px] h-[100px] m-[10px]  p-[10px] shadow-2xl flex flex-row justify-end items-center">
+            <div className="w-[800px] h-[100px] m-[10px]  p-[10px] shadow-2xl flex flex-row justify-end items-center relative">
                 <span className="text-2xl font-bold">
                     Total: {getTotal().toLocaleString('en-US', { style: 'currency', currency: 'LKR' })}
                 </span>
+                <button className="absolute left-[10px] w-[150px] h-[50px] cursor-pointer rounded-lg shadow-2xl bg-blue-700 border-[2px] border-blue-700 text-white hover:bg-white hover:text-blue-700">Checkout</button>
             </div>
         </div>
     )
