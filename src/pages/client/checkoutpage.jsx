@@ -2,6 +2,7 @@ import { useState } from "react"
 import { TbTrash } from "react-icons/tb"
 import { useLocation, useNavigate } from "react-router-dom"
 import toast from "react-hot-toast"
+import axios from "axios"
 
 export default function CheckoutPage(){
     const location = useLocation()
@@ -21,6 +22,43 @@ export default function CheckoutPage(){
        });
        return total
    }
+
+    async function placeOrder(){
+        const token = localStorage.getItem("token")
+        if(token == null){
+            toast.error("Please login to place order")
+            navigate("/login")
+            return
+        }
+
+        const order ={
+            address: "df",
+            phone: "hh",
+            items: []
+        }
+
+        cart.forEach((item)=>{
+            order.items.push({
+                productId: item.productId,
+                qty: item.quantity
+            })
+        })
+
+        try{
+            await axios.post(import.meta.env.VITE_BACKEND_URL + "/api/orders",order,{
+                headers:{
+                    Authorization : `Bearer ${token}`
+                }
+            })
+            toast.success("Order Place successfully")
+
+
+        }catch(error){
+            console.log(error);
+            toast.error("Fail to place order")
+            return
+        }
+    }
 
     return(
         <div className="w-full h-screen flex flex-col py-[40px] items-center">
@@ -75,7 +113,7 @@ export default function CheckoutPage(){
                 <span className="text-2xl font-bold">
                     Total: {getTotal().toLocaleString('en-US', { style: 'currency', currency: 'LKR' })}
                 </span>
-                <button className="absolute left-[10px] w-[150px] h-[50px] cursor-pointer rounded-lg shadow-2xl bg-blue-700 border-[2px] border-blue-700 text-white hover:bg-white hover:text-blue-700">Place Order</button>
+                <button onClick={placeOrder} className="absolute left-[10px] w-[150px] h-[50px] cursor-pointer rounded-lg shadow-2xl bg-blue-700 border-[2px] border-blue-700 text-white hover:bg-white hover:text-blue-700">Place Order</button>
             </div>
         </div>
     )
