@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { getCart } from "../../util/cart"
+import { TbTrash } from "react-icons/tb"
 
 export default function CartPage(){
     // localStorage.setItem("cart","[]") // cart eka empty krnwa local storage eke
@@ -11,7 +12,7 @@ export default function CartPage(){
                 cart.map(
                     (item)=> {
                         return(
-                            <div key={item.productId} className="w-[800px] h-[100px] m-[10px] shadow-2xl flex flex-row items-center">
+                            <div key={item.productId} className="w-[800px] h-[100px] m-[10px] shadow-2xl flex flex-row items-center relative">
                                 <img src={item.image} className="w-[100px] h-[100px] object-cover" />
                                 <div className="w-[320px] h-full   flex flex-col justify-center pl-[10px]">
                                     <span className=" font-bold">{item.name}</span>
@@ -25,6 +26,9 @@ export default function CartPage(){
                                 <div className="w-[190px] h-full flex  justify-end items-center pr-[10px]">
                                     <span className="font-bold">${(item.price * item.quantity).toLocaleString('en-US', { style: 'currency', currency: 'LKR' })}</span>
                                 </div>
+                                <button className="w-[30px] h-[30px] right-[-40px] absolute bg-red-700 shadow rounded-full flex justify-center items-center text-white border-[2px] border-red-500 hover:bg-white hover:text-red-500 cursor-pointer">
+                                    <TbTrash/>
+                                </button>
                             </div>
                         )
                     }
