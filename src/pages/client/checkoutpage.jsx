@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { TbTrash } from "react-icons/tb"
 import { useLocation, useNavigate } from "react-router-dom"
 import toast from "react-hot-toast"
@@ -8,7 +8,34 @@ export default function CheckoutPage(){
     const location = useLocation()
     const navigate = useNavigate()
     // localStorage.setItem("cart","[]") // cart eka empty krnwa local storage eke
+
+    const [user,setUser] = useState(null)
+
+    useEffect(()=>{
+        const token = localStorage.getItem("token")
+        if(token == null){
+            toast.error("Please login to checkout")
+            navigate("/login")
+            return
+        }else{
+            axios.get(import.meta.env.VITE_BACKEND_URL + "/api/users/",{ // token eka validate kranwa
+                headers:{
+                    Authorization : `Bearer ${token}`,
+                    
+                }
+            }).then((res)=>{
+                setUser(res.data)
+            }).catch((err)=>{
+                console.log(err);
+                toast.error("Failed to fetch user details")
+                navigate("/login")
+            })
+        }
+    })
+
+
     const [cart,setCart] = useState(location.state.items || [])
+
 
     if(location.state.items == null){
         toast.error("Please select items to checkout")

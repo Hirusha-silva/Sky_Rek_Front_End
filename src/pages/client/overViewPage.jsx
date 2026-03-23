@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../../components/loader";
 import ImageSlider from "../../components/imageSlider";
 import { addToCart, getCart } from "../../util/cart";
@@ -9,6 +9,7 @@ import { addToCart, getCart } from "../../util/cart";
 export default function OverViewPage(){
     const params = useParams();
     const [product, setProduct] = useState(null);
+    const navigate = useNavigate()
     const [status, setStatus] = useState("loading"); // loading, success, error awastha 3k thiyna nisa string use kara
 
     useEffect(
@@ -55,7 +56,17 @@ export default function OverViewPage(){
                                 }
                             </div>
                             <div className="w-full flex flex-row justify-center gap-[10px] items-center  mt-[20px]">
-                                <button className="w-[200px] h-[50px] rounded-xl text-white cursor-pointer bg-blue-500 border border-blue-500 hover:bg-white hover:text-blue-500">Buy Now</button>
+                                <button className="w-[200px] h-[50px] rounded-xl text-white cursor-pointer bg-blue-500 border border-blue-500 hover:bg-white hover:text-blue-500"onClick={()=>{
+                                    navigate("/checkout",{state:{items:[
+                                        {
+                                            productId: product.productId,
+                                            quantity: 1,
+                                            name: product.name,
+                                            image: product.images[0],
+                                            price: product.price
+                                        }
+                                    ]}})
+                                }}>Buy Now</button>
                                 <button className="w-[200px] h-[50px] rounded-xl text-white cursor-pointer bg-blue-700 border border-blue-700 hover:bg-white hover:text-blue-700" onClick={()=> {
                                     addToCart(product,1)
                                     toast.success("Product Add To Cart")
