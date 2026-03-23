@@ -61,9 +61,14 @@ export default function CheckoutPage(){
             return
         }
 
+        if(name === "" || address === "" | phone === "" ){
+            toast.error("Please fill all the fields")
+            return
+        }
+
         const order ={
-            address: "df",
-            phone: "hh",
+            address: address,
+            phone: phone,
             items: []
         }
 
