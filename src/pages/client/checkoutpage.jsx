@@ -10,6 +10,9 @@ export default function CheckoutPage(){
     // localStorage.setItem("cart","[]") // cart eka empty krnwa local storage eke
 
     const [user,setUser] = useState(null)
+    const [name,setName] = useState("")
+    const [address,setAddress] = useState("")
+    const [phone,setPhone] = useState("")
 
     useEffect(()=>{
         const token = localStorage.getItem("token")
@@ -20,18 +23,18 @@ export default function CheckoutPage(){
         }else{
             axios.get(import.meta.env.VITE_BACKEND_URL + "/api/users/",{ // token eka validate kranwa
                 headers:{
-                    Authorization : `Bearer ${token}`,
-                    
-                }
+                    Authorization : `Bearer ${token}`,  
+                },
             }).then((res)=>{
                 setUser(res.data)
+                setName(res.data.firstName + ' ' + res.data.lastName)
             }).catch((err)=>{
                 console.log(err);
                 toast.error("Failed to fetch user details")
                 navigate("/login")
             })
         }
-    })
+    },[])
 
 
     const [cart,setCart] = useState(location.state.items || [])
@@ -141,6 +144,23 @@ export default function CheckoutPage(){
                     Total: {getTotal().toLocaleString('en-US', { style: 'currency', currency: 'LKR' })}
                 </span>
                 <button onClick={placeOrder} className="absolute left-[10px] w-[150px] h-[50px] cursor-pointer rounded-lg shadow-2xl bg-blue-700 border-[2px] border-blue-700 text-white hover:bg-white hover:text-blue-700">Place Order</button>
+            </div>
+
+            <div className="w-[800px] h-[100px] m-[10px]  p-[10px] shadow-2xl flex flex-row justify-center items-center relative">
+                <input type="text" className="w-[200px] h-[40px] border border-gray-400 rounded-lg p[10px] mr-[10px]"
+                placeholder="Enter Your Name" 
+                value={name} 
+                onChange={(e)=>(setName(e.target.value))} />
+
+                <input type="text" className="w-[200px] h-[40px] border border-gray-400 rounded-lg p[10px] mr-[10px]"
+                placeholder="Enter Your Address" 
+                value={address} 
+                onChange={(e)=>(setAddress(e.target.value))} />
+
+                <input type="text" className="w-[200px] h-[40px] border border-gray-400 rounded-lg p[10px] mr-[10px]"
+                placeholder="Enter Your Phone" 
+                value={phone} 
+                onChange={(e)=>(setPhone(e.target.value))} />
             </div>
         </div>
     )
