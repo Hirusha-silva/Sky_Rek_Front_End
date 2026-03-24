@@ -6,6 +6,7 @@ import { IoIosSettings } from "react-icons/io";
 import ProductAdmin from "./admin/productAdmin";
 import AddProduct from "./admin/addProduct";
 import UpdateProduct from "./admin/updateProduct";
+import OrdersPage from "./admin/ordersPage";
 
 export default function AdminPage() {
     return (
@@ -13,7 +14,7 @@ export default function AdminPage() {
             <div className="w-[400px] h-full flex flex-col items-center">
                 <span className="text-3xl font-bold my-5">Admin Panel</span>
                 <Link className="flex  h-[60px] w-full p-[20px]  border items-center gap-3 text-3xl " to={"/admin/products"}><BsBoxSeamFill/>products</Link>
-                <Link className="flex  h-[60px] w-full p-[20px] border items-center gap-3 text-3xl " to={"/admin/orders"}><GrInstall/>orders</Link>
+                <Link className="flex  h-[60px] w-full p-[20px] border items-center gap-3 text-3xl " to={"/admin/ordersPage"}><GrInstall/>orders</Link>
                 <Link className="flex  h-[60px] w-full p-[20px] border items-center gap-3 text-3xl " to={"/admin/user"}><BsPeopleFill/>User</Link>
                 <Link className="flex  h-[60px] w-full p-[20px] border items-center gap-3 text-3xl " to={"/admin/settings"}><IoIosSettings/>Settings</Link>
             </div>
@@ -22,6 +23,7 @@ export default function AdminPage() {
                     <Route path="/" element={<h1>Admin Dashboard</h1>} />
                     <Route path="/products" element={<ProductAdmin/>} />
                     <Route path="/newProduct" element={<AddProduct/>} />
+                    <Route path="/ordersPage" element={<OrdersPage/>}/>
                     <Route path="/updateProduct" element={<UpdateProduct/>} />
             </Routes>
             </div>
