@@ -1,5 +1,5 @@
 export default function Paginator(props){
-    const {currentPage , totalPages , setCurrentPage , limit , setLimit ,setLoading} = props
+    const {currentPage , totalPages , setCurrentPage , limit , setLimit ,setLoading} = props  //props destructuring
 
     return (
         <div className="w-full h-[50px] flex flex-row justify-center items-center gap-[20px]">

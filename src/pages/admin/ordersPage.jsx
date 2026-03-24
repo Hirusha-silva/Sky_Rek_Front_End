@@ -29,8 +29,8 @@ export default function OrdersPage(){
     },[loading,page,limit])
 
     return (
-        <div className="w-full h-full flex flex-col ">
-            <table className="w-full h-full border-[3px]">
+        <div className="w-full h-full flex flex-col  justify-between">
+            <table className="w-full border-[3px]">
                 <thead>
                     <tr>
                         <th className="p-[10px]">Order Id</th>
@@ -47,7 +47,7 @@ export default function OrdersPage(){
                     {
                         orders.map((order,index)=>{
                             return(
-                            <tr key={order.orderId}>
+                            <tr key={order.orderId} className="border-b-[1px] hover:bg-blue-600 hover:text-white">
                                 <td className="p-[10px]">{order.orderId}</td>
                                 <td className="p-[10px]">{order.email}</td>
                                 <td className="p-[10px]">{order.name}</td>
