@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import Paginator from "../../components/paginator"
 
 export default function OrdersPage(){
     const [orders,setOrders] = useState([])
@@ -28,7 +29,7 @@ export default function OrdersPage(){
     },[loading,page,limit])
 
     return (
-        <div className="w-full h-full flex ">
+        <div className="w-full h-full flex flex-col ">
             <table className="w-full h-full border-[3px]">
                 <thead>
                     <tr>
@@ -61,6 +62,7 @@ export default function OrdersPage(){
                     }
                 </tbody>
             </table>
+            <Paginator currentPage={page} totalPages={totalPages} setCurrentPage={setPage} limit={limit} setLimit={setLimit} setLoading={setLoading}/>
         </div>
     )
 }
