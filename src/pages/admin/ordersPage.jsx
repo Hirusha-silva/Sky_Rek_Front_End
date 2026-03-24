@@ -4,15 +4,19 @@ import { useEffect, useState } from "react"
 export default function OrdersPage(){
     const [orders,setOrders] = useState([])
     const [loading,setLoading] = useState(true)
+    const [page,setPage] = useState(1)
+    const [totalPages,setTotalPages] = useState(0)
+    const [limit,setLimit] = useState(10)
 
     useEffect(()=>{
         if(loading){
-            axios.get(import.meta.env.VITE_BACKEND_URL + "/api/orders" ,{
+            axios.get(import.meta.env.VITE_BACKEND_URL + "/api/orders/" +page+"/"+limit ,{
                 headers : {
                     Authorization : `Bearer ${localStorage.getItem("token")}`,
                 },
             }).then((res)=>{
-                setOrders(res.data)
+                setOrders(res.data.orders)
+                setTotalPages(res.data.totalPages)
                 setLoading(false)
                 console.log(res.data);
                 
@@ -21,7 +25,7 @@ export default function OrdersPage(){
                 
             })
         }
-    },[loading])
+    },[loading,page,limit])
 
     return (
         <div className="w-full h-full flex ">
