@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import Paginator from "../../components/paginator"
+import toast from "react-hot-toast"
 
 export default function OrdersPage(){
     const [orders,setOrders] = useState([])
@@ -87,10 +88,10 @@ export default function OrdersPage(){
                         </button>
 
                     {/* TITLE */}
-                        <h2 className="text-2xl font-bold mb-4">Order Details</h2>
+                        <h2 className="text-2xl font-bold ">Order Details</h2>
 
                     {/* ORDER INFO */}
-                        <div className="grid grid-cols-3 gap-4 mb-6">
+                        <div className="grid grid-cols-3 gap-4 mb-6 relative">
                         <div>
                             <p className="text-gray-500 text-sm">Order ID</p>
                             <p className="font-semibold">{clickedOder.orderId}</p>
@@ -147,13 +148,39 @@ export default function OrdersPage(){
                         <p className="text-gray-500 text-sm">Address</p>
                         <p className="font-medium">{clickedOder.address}</p>
                         </div>
+
+                        {
+                            (odrerStatus !== clickedOder.status || orderNote !== clickedOder.notes) && <button className="bg-blue-500 text-white rounded-lg absolute bottom-6 right-6 py-2 px-4 cursor-pointer"
+                            onClick={async ()=>{
+                                setPopupVisible(false)
+                                try {
+                                    await axios.put(import.meta.env.VITE_BACKEND_URL + "/api/orders/" + clickedOder.orderId ,
+                                    {
+                                        status : odrerStatus,
+                                        notes : orderNote 
+                                    },
+                                    {
+                                        headers : {
+                                            Authorization : `Bearer ${localStorage.getItem("token")}`
+                                        }
+                                    })
+                                    toast.success("Changes saved")
+                                    setLoading(true)
+                                } catch (error) {
+                                    console.log(error);
+                                    toast.error("Failed to save changes")
+                                }
+                            }}>
+                            Save Changes
+                            </button>
+                            }
                         </div>
 
                         
 
                     {/* ITEMS */}
                     <div>
-                    <h3 className="text-lg font-semibold mb-3">Order Items</h3>
+                    <h3 className="text-lg font-semibold ">Order Items</h3>
 
                     <div className="space-y-4 max-h-[150px] overflow-y-auto">
                         {clickedOder.items?.map((item, i) => (
@@ -208,12 +235,13 @@ export default function OrdersPage(){
                             <p className="text-gray-500 text-sm">Note</p>
                             <p className="font-semibold">{clickedOder.notes}</p>
                         </div>
+                        <textarea value={orderNote} onChange={(e)=>setOrderNote(e.target.value)} className="w-[500px]" ></textarea>
             {/* TOTAL */}
-            <div className="mt-6 flex justify-end border-t pt-4">
+            <div className="mt-6 flex justify-end border-t">
                     
               <div className="text-right">
                 <p className="text-gray-500">Total</p>
-                <p className="text-2xl font-bold text-blue-600">
+                <p className="text-xl font-bold text-blue-600">
                   {clickedOder.total.toLocaleString("en-US", {
                     style: "currency",
                     currency: "LKR",
