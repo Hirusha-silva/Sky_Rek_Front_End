@@ -11,6 +11,8 @@ export default function OrdersPage(){
     const [popupVisible,setPopupVisible] = useState(false)
     const [clickedOder,setClickedOder] = useState(null)
     const [selectedImage, setSelectedImage] = useState(null)
+    const [odrerStatus, setOrderStatus] = useState("pending")
+    const [orderNote, setOrderNote] = useState("")
 
     useEffect(()=>{
         if(loading){
@@ -51,6 +53,8 @@ export default function OrdersPage(){
                         orders.map((order,index)=>{
                             return(
                             <tr key={order.orderId} className="border-b-[1px] hover:bg-blue-600 hover:text-white" onClick={(e)=>{
+                                setOrderStatus(order.status)
+                                setOrderNote(order.notes)
                                 setClickedOder(order)
                                 setPopupVisible(true)
                             }}>
@@ -129,6 +133,14 @@ export default function OrdersPage(){
                             >
                             {clickedOder.status}
                             </span>
+                            <select className="ml-4 p-1 border rounded"
+                                value={odrerStatus}
+                                onChange={(e) => setOrderStatus(e.target.value)}
+                            >
+                                <option value="pending">Pending</option>
+                                <option value="completed">Completed</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
                         </div>
                         {/* ADDRESS */}
                         <div className="mb-6">
@@ -192,7 +204,7 @@ export default function OrdersPage(){
                     ))}
                 </div>
             </div>
-                    <div>
+                        <div>
                             <p className="text-gray-500 text-sm">Note</p>
                             <p className="font-semibold">{clickedOder.notes}</p>
                         </div>
