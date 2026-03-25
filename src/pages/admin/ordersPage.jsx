@@ -8,6 +8,8 @@ export default function OrdersPage(){
     const [page,setPage] = useState(1)
     const [totalPages,setTotalPages] = useState(0)
     const [limit,setLimit] = useState(10)
+    const [popupVisible,setPopupVisible] = useState(false)
+    const [clickedOder,setClickedOder] = useState(null)
 
     useEffect(()=>{
         if(loading){
@@ -47,7 +49,10 @@ export default function OrdersPage(){
                     {
                         orders.map((order,index)=>{
                             return(
-                            <tr key={order.orderId} className="border-b-[1px] hover:bg-blue-600 hover:text-white">
+                            <tr key={order.orderId} className="border-b-[1px] hover:bg-blue-600 hover:text-white" onClick={(e)=>{
+                                setClickedOder(order)
+                                setPopupVisible(true)
+                            }}>
                                 <td className="p-[10px]">{order.orderId}</td>
                                 <td className="p-[10px]">{order.email}</td>
                                 <td className="p-[10px]">{order.name}</td>
@@ -62,6 +67,19 @@ export default function OrdersPage(){
                     }
                 </tbody>
             </table>
+            {
+                popupVisible && (
+                    <div className="fixed top-0 left-0 w-full h-full bg-[#00000050] flex justify-center items-center">
+                        <div className="w-[600px] h-[600px] bg-white relative">
+                            <button className="absolute w-[30px] h-[30px] bg-red-500 border-[2px] border-red-600 text-white top-[-30px] right-[-30px] rounded-full cursor-pointer hover:bg-transparent hover:text-red-500" onClick={()=>{
+                                setPopupVisible(false)
+                            }}>
+                                X
+                            </button>
+                        </div>
+                    </div>
+                )
+            }
             <Paginator currentPage={page} totalPages={totalPages} setCurrentPage={setPage} limit={limit} setLimit={setLimit} setLoading={setLoading}/>
         </div>
     )
