@@ -28,7 +28,7 @@ export default function ProductPage(){
 
     )
     return(
-        <div className="w-full h-full ">
+        <div className="w-full h-full  ">
             {loading ? <Loader/> : 
                 <div className="w-full flex  flex-wrap gap-4 justify-center items-center">
                     {

@@ -12,7 +12,7 @@ function App() {
   return (
     
     <BrowserRouter>
-      <div className='w-full h-screen' >  
+      <div className='w-full min-h-screen  bg-primary text-secondary' >  
         <Toaster position="top-right"/>  
         <Routes path="/">
           <Route path="/login" element={<LoginPage />} />

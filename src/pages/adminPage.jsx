@@ -11,14 +11,14 @@ import OrdersPage from "./admin/ordersPage";
 export default function AdminPage() {
     return (
         <div className="w-full h-screen flex">
-            <div className="w-[400px] h-full flex flex-col items-center">
+            <div className="w-[300px] h-full flex flex-col items-center">
                 <span className="text-3xl font-bold my-5">Admin Panel</span>
                 <Link className="flex  h-[60px] w-full p-[20px]  border items-center gap-3 text-3xl " to={"/admin/products"}><BsBoxSeamFill/>products</Link>
                 <Link className="flex  h-[60px] w-full p-[20px] border items-center gap-3 text-3xl " to={"/admin/ordersPage"}><GrInstall/>orders</Link>
                 <Link className="flex  h-[60px] w-full p-[20px] border items-center gap-3 text-3xl " to={"/admin/user"}><BsPeopleFill/>User</Link>
                 <Link className="flex  h-[60px] w-full p-[20px] border items-center gap-3 text-3xl " to={"/admin/settings"}><IoIosSettings/>Settings</Link>
             </div>
-            <div className="w-[calc(100%-400px)] h-full "> 
+            <div className="w-[calc(100%-300px)] h-full "> 
                 <Routes>
                     <Route path="/" element={<h1>Admin Dashboard</h1>} />
                     <Route path="/products" element={<ProductAdmin/>} />

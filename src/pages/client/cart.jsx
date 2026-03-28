@@ -21,14 +21,14 @@ export default function CartPage(){
                                     <span className="">${item.price.toLocaleString('en-US', { style: 'currency', currency: 'LKR' })}</span>
                                 </div>
                                 <div className="w-[190px] h-full flex flex-row justify-center items-center">
-                                    <button className="flex justify-center items-center bg-blue-500 rounded-full w-[30px]  text-white cursor-pointer hover:bg-blue-900" onClick={
+                                    <button className="flex justify-center items-center bg-accent rounded-full w-[30px]  text-white cursor-pointer hover:bg-blue-500" onClick={
                                         ()=>{
                                             addToCart(item,-1)
                                             setCart(getCart())
                                         }
                                     }>-</button>
                                     <span className="mx-[10px]">{item.quantity}</span>
-                                    <button className="flex justify-center items-center bg-blue-500 rounded-full w-[30px] text-white cursor-pointer hover:bg-blue-900" onClick={
+                                    <button className="flex justify-center items-center bg-accent rounded-full w-[30px] text-white cursor-pointer hover:bg-blue-500" onClick={
                                         ()=>{
                                             addToCart(item,1)
                                             setCart(getCart())
@@ -55,7 +55,7 @@ export default function CartPage(){
                 <span className="text-2xl font-bold">
                     Total: {getTotal().toLocaleString('en-US', { style: 'currency', currency: 'LKR' })}
                 </span>
-                <button className="absolute left-[10px] w-[150px] h-[50px] cursor-pointer rounded-lg shadow-2xl bg-blue-700 border-[2px] border-blue-700 text-white hover:bg-white hover:text-blue-700" onClick={()=>{
+                <button className="absolute left-[10px] w-[150px] h-[50px] cursor-pointer rounded-lg shadow-2xl bg-accent border-[2px] border-accent text-white hover:bg-white hover:text-blue-500" onClick={()=>{
                     navigate("/checkout",{state:{items:cart}})
                 }}>Checkout</button>
             </div>
