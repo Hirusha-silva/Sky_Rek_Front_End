@@ -9,7 +9,7 @@ export default function TestPage() {
 
     return (
         <div className="w-full h-screen flex justify-center items-center ">
-            <Loader/>
+            <div className="w-[300px] h-[300px] bg-red-600 md:bg-blue-500"></div>
 
         </div>
     )
