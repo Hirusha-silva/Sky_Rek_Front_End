@@ -35,16 +35,16 @@ export default function OverViewPage(){
 
                 {
                 status === "success" && 
-                    <div className="w-full h-full flex flex-col">
-                        <h1 className="text-2xl font-bold my-4 text-center">{product.name} <span className="font-light text-xl">{product.altNames.join(" | ")}</span></h1>
-                        <div className="w-full h-full flex flex-col justify-center items-center ">
+                    <div className="w-full h-full flex flex-col md:flex-row">
+                        <h1 className="text-2xl font-bold my-4 md:hidden text-center">{product.name} <span className="font-light text-xl">{product.altNames.join(" | ")}</span></h1>
+                        <div className="w-full md:w-[49%] h-full flex flex-col justify-center items-center ">
                             
                             <ImageSlider images ={product.images}/>
                         </div>
-                        <div className="w-full h-full flex flex-col items-center pt-[50px]">
-                            <h1 className="text-2xl font-bold hidden">{product.name} <span className="font-light text-xl">{product.altNames.join(" | ")}</span></h1>
-                            <p className="text-lg p-2">{product.description}</p>
-                            <div className="w-full flex flex-col items-center mt-[20px]">
+                        <div className="w-full h-full  md:w-[49%] flex flex-col items-center pt-[50px]">
+                            <h1 className="text-2xl font-bold hidden md:block">{product.name} <span className="font-light text-xl">{product.altNames.join(" | ")}</span></h1>
+                            <p className="text-lg p-2 md:mt-[20px] ">{product.description}</p>
+                            <div className="w-full flex flex-col  items-center mt-[20px]">
                                 {
                                     product.labelledPrice > product.price?
                                     <div>
