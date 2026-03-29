@@ -7,7 +7,7 @@ import CheckoutPage from "./checkoutpage";
 
 export default function ClientPage(){
     return(
-        <div className="w-full h-screen max-h-screen ">
+        <div className="w-full min-h-screen ">
             <Header/>
             <div className="w-full h-[calc(100%-100px)] p-2 ">
                 <Routes path="/">
