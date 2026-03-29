@@ -81,7 +81,7 @@ export default function LoginPage() {
                 <button onClick={login} className="w-[350px] h-[50px] bg-blue-500 text-white rounded-3xl mt-5">Login</button>
                 <button onClick={googleLogin} className="w-[350px] h-[50px] bg-blue-500 text-white rounded-3xl mt-5">Google Login</button>
                 <p className="text-lg mt-5">Don't have an account? <Link to={"/register"} className="text-blue-500">Sign up</Link></p>
-                
+                <p className="text-lg mt-5 text-white">Forget Password? <Link to={"/forgot-password"} className="text-blue-500">Reset password</Link></p>
             </div>
         </div>
     )
