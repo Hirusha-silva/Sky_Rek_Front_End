@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 export default function Header(){
     const navigate = useNavigate()
     const [isOpen, setIsOpen] = useState(false)
+    const token = localStorage.getItem("token")
     return(
         <header className="h-[100px] bg-accent flex justify-center items-center relative">
             {isOpen && 
@@ -56,7 +57,15 @@ export default function Header(){
             <Link to="/reviews" className=" ml-4 text-white text-xl ">Reviews</Link>
             <Link to="/about-us" className=" ml-4 text-white text-xl ">About Us</Link>
             <Link to="/contact-us" className=" ml-4 text-white text-xl ">Contact Us</Link>
-            <Link to="/cart" className="absolute right-[80px]  "><BiCart className="text-white text-3xl ml-4 "/> </Link>
+            <Link to="/cart" className="absolute right-[160px]  "><BiCart className="text-white text-3xl ml-4 "/> </Link>
+            {
+                token != null && <button className="absolute right-[80px] ml-4 text-white text-xl" onClick={()=>{
+                    localStorage.removeItem("token")
+                    navigate("/login")
+                }}>
+                    Logout
+                </button>
+            }
             </div>
         </header>
     ) 
