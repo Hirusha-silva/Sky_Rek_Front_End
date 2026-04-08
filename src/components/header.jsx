@@ -29,7 +29,7 @@ export default function Header(){
                             setIsOpen(false)
                             navigate("/products")
                         }}>
-                            <BiStore className="text-accent mr-2"/>
+                            <BiStore className="text-accent mr-2 "/>
                             Products
                         </button>
 
@@ -51,12 +51,13 @@ export default function Header(){
                 setIsOpen(true)
             }}/>
             <div className="hidden w-full md:flex justify-center items-center">
-            <Link to="/" className="ml-4 text-white text-xl ">Home</Link>
-            <Link to="/products" className=" ml-4 text-white text-xl ">Products</Link>
-            <Link to="/reviews" className=" ml-4 text-white text-xl ">Reviews</Link>
-            <Link to="/about-us" className=" ml-4 text-white text-xl ">About Us</Link>
-            <Link to="/contact-us" className=" ml-4 text-white text-xl ">Contact Us</Link>
-            <Link to="/cart" className="absolute right-[80px]  "><BiCart className="text-white text-3xl ml-4 "/> </Link>
+            <Link to="/" className="ml-4 text-white font-serif italic text-xl   border border-[2px] border-transparent  h-[30px] items-center justify-center flex hover:border-b-white transition-all duration-500 hover:scale-115 ">Home</Link>
+            <Link to="/products" className=" ml-4 text-white font-serif italic text-xl   border border-[2px] border-transparent  h-[30px] items-center justify-center flex hover:border-b-white transition-all duration-500 hover:scale-115">Products</Link>
+            
+            <Link to="/reviews" className=" ml-4 text-white font-serif italic text-xl   border border-[2px] border-transparent  h-[30px] items-center justify-center flex hover:border-b-white transition-all duration-500 hover:scale-115 ">Reviews</Link>
+            <Link to="/about-us" className=" ml-4 text-white font-serif italic text-xl   border border-[2px] border-transparent  h-[30px] items-center justify-center flex hover:border-b-white transition-all duration-500 hover:scale-115 ">About Us</Link>
+            <Link to="/contact-us" className=" ml-4 text-white font-serif italic text-xl   border border-[2px] border-transparent  h-[30px] items-center justify-center flex hover:border-b-white transition-all duration-500 hover:scale-115 ">Contact Us</Link>
+            <Link to="/cart" className="absolute right-[80px]  "><BiCart className="text-white text-3xl ml-4  hover:scale-200 transition-all duration-500 hover:rotate-5"/> </Link>
             </div>
         </header>
     ) 
