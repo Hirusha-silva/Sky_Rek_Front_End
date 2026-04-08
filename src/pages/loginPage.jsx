@@ -59,7 +59,9 @@ export default function LoginPage() {
     }
 
     return (
-        <div className="w-full h-screen bg-[url(./backGround.jpg)] bg-cover bg-center flex justify-center items-center">
+        <div className="w-full h-screen  bg-cover bg-center flex justify-center items-center"
+            style={{ backgroundImage: "url('/backGround.jpg')" }}
+        >
 
             <div className="w-[600px] h-[600px] backdrop-blur-sm relative rounded-[60px] gap-[20px] shadow-2xl text-black flex flex-col items-center justify-center">
 
