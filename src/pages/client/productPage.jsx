@@ -92,7 +92,7 @@ export default function ProductPage() {
 
     return (
         /* NEW BACKGROUND: Warm Champagne / Nude (#F8F2ED) */
-        <div className="w-full min-h-screen bg-[#F8F2ED] text-[#332D29] font-sans selection:bg-[#D4A373] selection:text-white">
+        <div className="w-full min-h-screen bg-primary text-[#332D29] font-sans selection:bg-[#D4A373] selection:text-white">
             
             {/* --- COMPACT ELEGANT HEADER --- */}
             <header className="relative w-full pt-16 pb-8 px-6 overflow-hidden">

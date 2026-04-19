@@ -14,7 +14,7 @@ export default function Header(){
                 <div className="h-full w-[300px] flex flex-col bg-white">
                     <div className="w-full bg-accent h-[100px] flex pl-[40px] flex-row items-center gap-[20px]">
                         <RxHamburgerMenu className="text-white  md:hidden text-4xl" onClick={() => setIsOpen(false)}/>
-                        <img className="w-[120px]   h-[80px] cursor-pointer object-cover" src="/Lumina_Beauty-removebg-preview.png" onClick={() => navigate('/')} />
+                        <img className="w-[120px]   h-[80px] cursor-pointer object-cover" src="/Lumina_Beauty__3_-removebg-preview.png" onClick={() => navigate('/')} />
                     </div>
                     <div className="w-full flex flex-col p-[45px] items-start">
                         <button className="text-accent text-2xl flex flex-row items-center " onClick={()=>{
@@ -46,7 +46,7 @@ export default function Header(){
                 </div>
                 
             }
-            <img className="w-[120px] absolute md:left-[30px] h-[80px] cursor-pointer object-cover" src="/Lumina_Beauty-removebg-preview.png" onClick={() => navigate('/')} />
+            <img className="w-[150px] absolute md:left-[30px] h-[100px] cursor-pointer object-cover hover:scale-120 transition-all duration-500  "  src="/Lumina_Beauty__3_-removebg-preview.png " onClick={() => navigate('/')} />
             <RxHamburgerMenu className="text-white absolute left-[40px] md:hidden text-4xl" onClick={()=>{
                 setIsOpen(true)
             }}/>
@@ -58,7 +58,7 @@ export default function Header(){
             <Link to="/about-us" className=" ml-4 text-white font-serif italic text-xl   border border-[2px] border-transparent  h-[30px] items-center justify-center flex hover:border-b-white transition-all duration-500 hover:scale-115 ">About Us</Link>
             <Link to="/contact-us" className=" ml-4 text-white font-serif italic text-xl   border border-[2px] border-transparent  h-[30px] items-center justify-center flex hover:border-b-white transition-all duration-500 hover:scale-115 ">Contact Us</Link>
             <Link to="/cart" className="absolute right-[80px]  "><BiCart className="text-white text-3xl ml-4  hover:scale-200 transition-all duration-500 hover:rotate-5"/> </Link>
-            
+
             </div>
         </header>
     ) 

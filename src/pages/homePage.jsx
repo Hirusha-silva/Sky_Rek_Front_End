@@ -8,7 +8,7 @@ export default function HomePage() {
       
       {/* --- HERO SECTION --- */}
       <section className="relative min-h-screen flex items-center pt-5 overflow-hidden">
-        {/* Background Decorative Circle */}
+        
         <div className="absolute top-[-5%] right-[-5%] w-[500px] h-[500px] bg-[#FDF2F8] rounded-full blur-3xl opacity-60 animate-pulse"></div>
         
         <div className="container mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center">
